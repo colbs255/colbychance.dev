@@ -17,22 +17,23 @@
 
 == What's new?
 
-* Region Pinning for G1
-* Synchronize virtual threads without pinning
+* Performance
+    ** Region Pinning for G1
+    ** JFR Method Timing & Tracing (timing without installing an agent)
+    ** Compact Object Headers
+    ** Ahead-of-Time Method Profiling
+    ** Synchronize virtual threads without pinning
+    ** ZGC: Generational mode
+
 * Unnamed variables & Patterns
 * Foreign Function & Memory API
 * Markdown Documentation Comments
 * Module Import Declarations
 * Compact Source Files and Instance Main Methods
-* ZGC: Generational mode
-* Synchronize Virtual Threads without Pinning
 * Class-File API
 * Stream Gatherers
 * Scoped Values
 * Flexible Constructor Bodies
-* JFR Method Timing & Tracing (timing without installing an agent)
-* Compact Object Headers
-* Ahead-of-Time Method Profiling
 
 == Synchronize Virtual Threads without Pinning
 
