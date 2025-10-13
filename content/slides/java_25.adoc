@@ -37,4 +37,68 @@
 
 == Synchronize Virtual Threads without Pinning
 
+== Unnamed Variables & Patterns
+
+=== Unnamed Variable
+
+.Before
+[,java]
+----
+try (var trace = Trace.start()) {
+    // ...
+}
+----
+
+.After
+[,java]
+----
+try (var _ = Trace.start()) {
+    // ...
+}
+----
+
+=== Unnamed Variable: Lambda
+
+.Before
+[,java]
+----
+Map<String, List<Employee>> employees;
+employees.computeIfAbsent("jim", k -> new ArrayList<>()).add(...);
+----
+
+.After
+[,java]
+----
+Map<String, List<Employee>> employees;
+employees.computeIfAbsent("jim", _ -> new ArrayList<>()).add(...);
+----
+
+=== Unnamed Variable: Exceptions
+
+.Before
+[,java]
+----
+boolean isValidInteger(String s) {
+    try {
+        Integer.parseInt(s);
+        return true;
+    } catch (NumberFormatException e) {
+        return false;
+    }
+}
+----
+
+.After
+[,java]
+----
+boolean isValidInteger(String s) {
+    try {
+        Integer.parseInt(s);
+        return true;
+    } catch (NumberFormatException _) {
+        return false;
+    }
+}
+----
+
 == Questions
