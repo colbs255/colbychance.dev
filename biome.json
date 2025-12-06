@@ -40,5 +40,10 @@
             "bracketSameLine": false,
             "quoteStyle": "double"
         }
+    },
+    "css": {
+        "parser": {
+            "tailwindDirectives": true
+        }
     }
 }
