@@ -1,6 +1,6 @@
+import type { Metadata } from "next";
 import { getPosts } from "@/lib/posts";
 import { compareLocalDate, formatPageTitle } from "@/lib/util";
-import type { Metadata } from "next";
 import Grid, { type Item } from "../components/grid";
 import Title from "../components/title";
 

@@ -1,6 +1,6 @@
+import Link from "next/link";
 import type { LocalDate } from "@/lib/types";
 import { formatLocalDate } from "@/lib/util";
-import Link from "next/link";
 
 export interface Item {
     name: string;
