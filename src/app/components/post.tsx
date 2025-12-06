@@ -1,10 +1,10 @@
-import generatePlantUmlSvg from "@/lib/plantuml";
-import type { Doc } from "@/lib/types";
 import { evaluate } from "@mdx-js/mdx";
 import rehypeShiki, { type RehypeShikiOptions } from "@shikijs/rehype";
 import { Info, Pencil, TriangleAlert } from "lucide-react";
 import * as runtime from "react/jsx-runtime";
 import remarkGfm from "remark-gfm";
+import generatePlantUmlSvg from "@/lib/plantuml";
+import type { Doc } from "@/lib/types";
 import Admonition, { type AdmonitionProps } from "./admonition";
 import PlantUML from "./plantuml";
 

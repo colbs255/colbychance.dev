@@ -1,10 +1,10 @@
+// @ts-expect-error: lib does not have ts types and I can't figure out how to make ts happy
+import * as reveal from "@asciidoctor/reveal.js";
+import Asciidoctor from "asciidoctor";
 import fs from "fs";
 import path from "path";
 import type { Metadata } from "@/lib/types";
 import { parseLocalDate, slugify } from "@/lib/util";
-// @ts-expect-error: lib does not have ts types and I can't figure out how to make ts happy
-import * as reveal from "@asciidoctor/reveal.js";
-import Asciidoctor from "asciidoctor";
 
 const root = process.cwd();
 const slidesDir = path.join(root, "content", "slides");

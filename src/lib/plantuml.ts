@@ -1,8 +1,8 @@
 import { spawn } from "child_process";
 import crypto from "crypto";
 import fs from "fs";
-import path from "path";
 import fsPromise from "fs/promises";
+import path from "path";
 import type { DiagramPath } from "./types";
 
 const CACHE_DIR = path.resolve("./public/diagrams");

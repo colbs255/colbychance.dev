@@ -1,8 +1,8 @@
 import fs from "fs";
+import type { Metadata as NextMetadata } from "next";
 import path from "path";
 import type { Metadata } from "@/lib/types";
 import { compareLocalDate, formatPageTitle } from "@/lib/util";
-import type { Metadata as NextMetadata } from "next";
 import Grid, { type Item } from "../components/grid";
 import Title from "../components/title";
 
