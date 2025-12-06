@@ -22,11 +22,16 @@
         "rules": {
             "recommended": true,
             "style": {
-                "useNodejsImportProtocol": "off"
+                "useNodejsImportProtocol": "off",
+                "noDescendingSpecificity": "off"
             },
             "complexity": {
                 "noForEach": "off",
+                "noImportantStyles": "off",
                 "useLiteralKeys": "off"
+            },
+            "performance": {
+                "noImgElement": "off"
             }
         }
     },
