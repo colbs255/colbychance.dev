@@ -15,6 +15,10 @@ export default function CopyButton() {
             const code = pre.querySelector("code");
             const text = code?.textContent ?? pre.textContent ?? "";
 
+            if (!navigator.clipboard) {
+                return;
+            }
+
             navigator.clipboard.writeText(text).then(() => {
                 setCopied(true);
                 if (timeoutRef.current) clearTimeout(timeoutRef.current);
