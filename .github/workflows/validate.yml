@@ -11,9 +11,9 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    lint:
+    validate:
         runs-on: ubuntu-latest
-        name: Build
+        name: Validate
         steps:
             - name: Checkout
               uses: actions/checkout@v4

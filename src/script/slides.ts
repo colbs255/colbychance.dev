@@ -27,7 +27,6 @@ reveal.register();
 const attributes = [
     "source-highlighter=highlightjs",
     "revealjs_theme=white",
-    "source-highlighter=highlightjs",
     "table-caption!",
     "revealjs_margin=.05",
     "revealjs_hash=true",
