@@ -23,7 +23,7 @@ export default function CopyButton() {
                 setCopied(true);
                 if (timeoutRef.current) clearTimeout(timeoutRef.current);
                 timeoutRef.current = setTimeout(() => setCopied(false), 2000);
-            });
+            }).catch(() => setCopied(false));
         },
         [],
     );
