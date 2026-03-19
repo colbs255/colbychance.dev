@@ -31,6 +31,8 @@
                 "useLiteralKeys": "off"
             },
             "performance": {
+                // next/image optimization is disabled for static export;
+                // raw <img> is used for PlantUML SVGs in plantuml.tsx
                 "noImgElement": "off"
             }
         }

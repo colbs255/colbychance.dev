@@ -24,3 +24,44 @@ tags: vim, git, testing
     };
     expect(parseDoc(testData)).toStrictEqual(expected);
 });
+
+test("parseDoc handles values containing colons", () => {
+    const testData = `---
+title: Foo: Bar: Baz
+publishedAt: 2025-04-01
+tags: testing
+---
+
+Content`;
+    const result = parseDoc(testData);
+    expect(result.meta.title).toBe("Foo: Bar: Baz");
+});
+
+test("parseDoc throws on missing frontmatter", () => {
+    expect(() => parseDoc("no frontmatter here")).toThrow(
+        "Frontmatter not found",
+    );
+});
+
+test("parseDoc throws on missing required fields", () => {
+    const testData = `---
+title: Test
+---
+
+Content`;
+    expect(() => parseDoc(testData)).toThrow(
+        "Doc must have title, tags, and publishedAt",
+    );
+});
+
+test("parseDoc throws on malformed frontmatter line", () => {
+    const testData = `---
+title: Test
+bad line without separator
+publishedAt: 2025-04-01
+tags: testing
+---
+
+Content`;
+    expect(() => parseDoc(testData)).toThrow("Expected line");
+});

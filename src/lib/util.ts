@@ -66,8 +66,12 @@ export function parseDoc(fileContent: string): Doc {
 
     const result: Record<string, string> = {};
     frontMatterLines.forEach((line) => {
-        const components = line.split(": ");
-        const [key, value] = [components[0], components[1]];
+        const separatorIndex = line.indexOf(": ");
+        if (separatorIndex === -1) {
+            throw new Error(`Expected line ${line} to have format k: v`);
+        }
+        const key = line.slice(0, separatorIndex);
+        const value = line.slice(separatorIndex + 2);
         if (!key || !value) {
             throw new Error(`Expected line ${line} to have format k: v`);
         }

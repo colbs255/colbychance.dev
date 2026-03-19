@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import Post from "@/app/components/post";
 import Title from "@/app/components/title";
 import { getPosts } from "@/lib/posts";
-import type { Doc } from "@/lib/types";
 import { formatLocalDate, formatPageTitle } from "@/lib/util";
 
 type Params = {
@@ -19,7 +18,10 @@ export async function generateMetadata({
     params: Promise<Params>;
 }) {
     const { slug } = await params;
-    const doc: Doc = getPosts().find((doc) => doc.meta.slug === slug) as Doc;
+    const doc = getPosts().find((doc) => doc.meta.slug === slug);
+    if (!doc) {
+        notFound();
+    }
     return {
         title: formatPageTitle(doc.meta.title),
     };
@@ -27,7 +29,7 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: Promise<Params> }) {
     const { slug } = await params;
-    const doc: Doc = getPosts().find((doc) => doc.meta.slug === slug) as Doc;
+    const doc = getPosts().find((doc) => doc.meta.slug === slug);
     if (!doc) {
         notFound();
     }

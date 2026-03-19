@@ -15,14 +15,16 @@ const State = {
     BACKWARD_JOKE: 1,
     FORWARD_NAME: 2,
     DONE: 3,
-};
+} as const;
 
 export default function Home() {
     // Initialize to "/" so the element doesn't pop in
     const [displayedText, setDisplayedText] = useState("/");
-    const [state, setState] = useState(State.FORWARD_JOKE);
+    const [state, setState] = useState<(typeof State)[keyof typeof State]>(
+        State.FORWARD_JOKE,
+    );
     useEffect(() => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             switch (state) {
                 case State.FORWARD_JOKE: {
                     if (displayedText === joke) {
@@ -63,6 +65,7 @@ export default function Home() {
                 }
             }
         }, 100);
+        return () => clearTimeout(timeout);
     }, [displayedText, state]);
 
     return (
