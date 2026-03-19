@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Clipboard } from "lucide-react";
+import { Check, Copy } from "lucide-react";
 import { useCallback, useRef, useState } from "react";
 
 export default function CopyButton() {
@@ -40,7 +40,7 @@ export default function CopyButton() {
                        hover:text-neutral-900 dark:hover:text-neutral-100
                        transition-opacity duration-200 cursor-pointer"
         >
-            {copied ? <Check size={14} /> : <Clipboard size={14} />}
+            {copied ? <Check size={14} /> : <Copy size={14} />}
         </button>
     );
 }
