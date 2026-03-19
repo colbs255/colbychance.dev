@@ -19,11 +19,17 @@ export default function CopyButton() {
                 return;
             }
 
-            navigator.clipboard.writeText(text).then(() => {
-                setCopied(true);
-                if (timeoutRef.current) clearTimeout(timeoutRef.current);
-                timeoutRef.current = setTimeout(() => setCopied(false), 2000);
-            }).catch(() => setCopied(false));
+            navigator.clipboard
+                .writeText(text)
+                .then(() => {
+                    setCopied(true);
+                    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                    timeoutRef.current = setTimeout(
+                        () => setCopied(false),
+                        2000,
+                    );
+                })
+                .catch(() => setCopied(false));
         },
         [],
     );
