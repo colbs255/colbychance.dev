@@ -17,14 +17,88 @@
 
 == What's new?
 
-* Region Pinning for G1
-* Synchronize virtual threads without pinning
-* Unnamed variables and patterns
+* Performance
+    ** Region Pinning for G1
+    ** JFR Method Timing & Tracing (timing without installing an agent)
+    ** Compact Object Headers
+    ** Ahead-of-Time Method Profiling
+    ** Synchronize virtual threads without pinning
+    ** ZGC: Generational mode
+
+* Unnamed variables & Patterns
 * Foreign Function & Memory API
 * Markdown Documentation Comments
 * Module Import Declarations
 * Compact Source Files and Instance Main Methods
+* Class-File API
+* Stream Gatherers
+* Scoped Values
+* Flexible Constructor Bodies
 
 == Synchronize Virtual Threads without Pinning
+
+== Unnamed Variables & Patterns
+
+=== Unnamed Variable
+
+.Before
+[,java]
+----
+try (var trace = Trace.start()) {
+    // ...
+}
+----
+
+.After
+[,java]
+----
+try (var _ = Trace.start()) {
+    // ...
+}
+----
+
+=== Unnamed Variable: Lambda
+
+.Before
+[,java]
+----
+Map<String, List<Employee>> employees;
+employees.computeIfAbsent("jim", k -> new ArrayList<>()).add(...);
+----
+
+.After
+[,java]
+----
+Map<String, List<Employee>> employees;
+employees.computeIfAbsent("jim", _ -> new ArrayList<>()).add(...);
+----
+
+=== Unnamed Variable: Exceptions
+
+.Before
+[,java]
+----
+boolean isValidInteger(String s) {
+    try {
+        Integer.parseInt(s);
+        return true;
+    } catch (NumberFormatException e) {
+        return false;
+    }
+}
+----
+
+.After
+[,java]
+----
+boolean isValidInteger(String s) {
+    try {
+        Integer.parseInt(s);
+        return true;
+    } catch (NumberFormatException _) {
+        return false;
+    }
+}
+----
 
 == Questions
